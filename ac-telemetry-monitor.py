@@ -3,6 +3,7 @@ from app import App
 
 def acMain(ac_version: str) -> str:
     # create app
+    global app
     app = App(
         name='AC-Telemetry-Monitor',
         width=400,
@@ -12,3 +13,9 @@ def acMain(ac_version: str) -> str:
 
     # app name
     return app.name
+
+
+def acUpdate(dt: int) -> None:
+    # on update
+    global app
+    app.on_acUpdate(dt)

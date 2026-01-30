@@ -1,3 +1,4 @@
+import random
 import sys
 
 import ac
@@ -33,5 +34,8 @@ class App:
         ac.console(msg)
 
         # label
-        label = ac.addLabel(app_window, 'App: Label: some telemetry')
-        ac.setPosition(label, 3, 30)
+        self.label = ac.addLabel(app_window, 'App: Label: some telemetry')
+        ac.setPosition(self.label, 3, 30)
+
+    def on_acUpdate(self, dt: int) -> None:
+        ac.setText(self.label, str(random.random()))

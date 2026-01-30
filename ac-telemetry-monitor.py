@@ -23,5 +23,9 @@ def acMain(ac_version: str) -> str:
     ac.log(msg)
     ac.console(msg)
 
+    # label
+    label = ac.addLabel(app_window, 'Label: This is a label')
+    ac.setPosition(label, 3, 30)
+
     # app name
     return APP_NAME

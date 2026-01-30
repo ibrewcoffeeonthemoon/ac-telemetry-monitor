@@ -10,7 +10,7 @@ def acMain(ac_version):
 
     ac.setSize(appWindow, WIDTH, HEIGHT)
 
-    ac.log("Hello, Assetto Corsa application world!")
-    ac.console("Hello, Assetto Corsa console!")
+    ac.log(APP_NAME + ": Hello, Assetto Corsa application world!")
+    ac.console(APP_NAME + ": Hello, Assetto Corsa console!")
 
     return APP_NAME

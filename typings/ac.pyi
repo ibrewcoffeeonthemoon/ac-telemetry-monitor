@@ -149,7 +149,7 @@ def getCarRealTimeLeaderboardPosition(carId: int) -> int:
     ...
 
 
-def getCarState(carId: int, infoId: int, param: str = "") -> int:
+def getCarState(carId: int, infoId: int, param: str = "") -> Any:
     ...
 
 

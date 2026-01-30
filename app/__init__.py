@@ -3,6 +3,8 @@ import sys
 import ac
 import acsys
 
+from app.label import Label
+
 
 class App:
     def __init__(
@@ -32,16 +34,18 @@ class App:
         ac.log(msg)
         ac.console(msg)
 
-        # label
-        self.label = ac.addLabel(app_window, '')
-        ac.setPosition(self.label, 3, 30)
+        # labels
+        self.label_SpeedKMH = Label(app_window, 3, 30)
+        self.label_SlipRatio = Label(app_window, 3, 60)
 
         # init
-        self.focused_car_id = ac.getFocusedCar()
+        self.car_id = ac.getFocusedCar()
 
     def on_acUpdate(self, dt: int) -> None:
         # resolve speed
-        speed_kmh = ac.getCarState(self.focused_car_id, acsys.CS.SpeedKMH)
+        speed_kmh = ac.getCarState(self.car_id, acsys.CS.SpeedKMH)
+        slip_ratio = ac.getCarState(self.car_id, acsys.CS.SlipRatio)
 
         # display telemetry
-        ac.setText(self.label, 'Speed: {speed:.0f}'.format(speed=speed_kmh))
+        self.label_SpeedKMH.set_text('Speed: {:.0f}'.format(speed_kmh))
+        self.label_SlipRatio.set_text('SlipRatio: {:.4f}, {:.4f}, {:.4f}, {:.4f}'.format(*slip_ratio))

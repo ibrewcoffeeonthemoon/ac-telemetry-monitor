@@ -1,3 +1,5 @@
+import sys
+
 import ac
 import acsys
 
@@ -5,12 +7,21 @@ APP_NAME = 'AC-Telemetry-Monitor'
 WIDTH, HEIGHT = 400, 200
 
 
-def acMain(ac_version):
-    appWindow = ac.newApp(APP_NAME)
+def acMain(ac_version: str) -> str:
+    # create app window
+    app_window = ac.newApp(APP_NAME)
 
-    ac.setSize(appWindow, WIDTH, HEIGHT)
+    # size
+    ac.setSize(app_window, WIDTH, HEIGHT)
 
-    ac.log(APP_NAME + ": Hello, Assetto Corsa application world!")
-    ac.console(APP_NAME + ": Hello, Assetto Corsa console!")
+    # print version info
+    msg = '{name}: Hello, ac v{ac_version}, python v{py_version}'.format(
+        name=APP_NAME,
+        py_version=sys.version,
+        ac_version=ac_version
+    )
+    ac.log(msg)
+    ac.console(msg)
 
+    # app name
     return APP_NAME

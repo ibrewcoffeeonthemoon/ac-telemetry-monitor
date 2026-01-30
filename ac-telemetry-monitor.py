@@ -5,7 +5,7 @@ def acMain(ac_version: str) -> str:
     # create app
     global app
     app = App(
-        name='AC-Telemetry-Monitor',
+        name='AC Telemetry Monitor',
         width=400,
         height=200,
         ac_version=ac_version

@@ -34,18 +34,19 @@ class App:
         ac.log(msg)
         ac.console(msg)
 
-        # labels
-        self.label_SpeedKMH = Label(app_window, 3, 30)
-        self.label_SlipRatio = Label(app_window, 3, 60)
-
         # init
         self.car_id = ac.getFocusedCar()
 
-    def on_acUpdate(self, dt: int) -> None:
-        # resolve speed
-        speed_kmh = ac.getCarState(self.car_id, acsys.CS.SpeedKMH)
-        slip_ratio = ac.getCarState(self.car_id, acsys.CS.SlipRatio)
+        # labels
+        self.labels = [
+            Label(app_window, self.car_id, xPos, yPos, metric)
+            for xPos, yPos, metric in [
+                (3, 30, acsys.CS.SpeedKMH),
+                (3, 60, acsys.CS.SlipRatio),
+            ]
+        ]
 
+    def on_acUpdate(self, dt: int) -> None:
         # display telemetry
-        self.label_SpeedKMH.set_text('Speed: {:.0f}'.format(speed_kmh))
-        self.label_SlipRatio.set_text('SlipRatio: {:.4f}, {:.4f}, {:.4f}, {:.4f}'.format(*slip_ratio))
+        for label in self.labels:
+            label.display()

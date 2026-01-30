@@ -165,6 +165,10 @@ def getDriverName(carId: int) -> str:
     ...
 
 
+def getFocusedCar() -> int:
+    ...
+
+
 def getItemCount(object: Any) -> int:
     ...
 

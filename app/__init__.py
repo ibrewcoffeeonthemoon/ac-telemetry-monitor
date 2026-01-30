@@ -1,4 +1,3 @@
-import random
 import sys
 
 import ac
@@ -34,8 +33,15 @@ class App:
         ac.console(msg)
 
         # label
-        self.label = ac.addLabel(app_window, 'App: Label: some telemetry')
+        self.label = ac.addLabel(app_window, '')
         ac.setPosition(self.label, 3, 30)
 
+        # init
+        self.focused_car_id = ac.getFocusedCar()
+
     def on_acUpdate(self, dt: int) -> None:
-        ac.setText(self.label, str(random.random()))
+        # resolve speed
+        speed_kmh = ac.getCarState(self.focused_car_id, acsys.CS.SpeedKMH)
+
+        # display telemetry
+        ac.setText(self.label, 'Speed: {speed:.0f}'.format(speed=speed_kmh))

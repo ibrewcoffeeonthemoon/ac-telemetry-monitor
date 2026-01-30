@@ -41,8 +41,10 @@ class App:
         self.labels = [
             Label(app_window, self.car_id, xPos, yPos, metric)
             for xPos, yPos, metric in [
-                (3, 30, acsys.CS.SpeedKMH),
-                (3, 60, acsys.CS.SlipRatio),
+                (0, 30, acsys.CS.SpeedKMH),
+                (0, 60, acsys.CS.SlipRatio),
+                (0, 90, acsys.CS.SlipAngle),
+                (0, 120, acsys.CS.LocalVelocity),
             ]
         ]
 
